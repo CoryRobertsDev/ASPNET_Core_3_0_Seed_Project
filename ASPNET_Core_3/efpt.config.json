@@ -1,0 +1,58 @@
+﻿{
+   "ContextClassName": "UcInventoryContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "EquipmentManager",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Assignment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Department]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Employee]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Equipment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[EquipmentType]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Manufacturer]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Repair]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[State]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Vendor]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

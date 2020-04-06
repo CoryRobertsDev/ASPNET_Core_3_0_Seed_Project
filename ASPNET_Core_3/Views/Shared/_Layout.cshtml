@@ -1,26 +1,36 @@
-﻿<!DOCTYPE html>
+﻿@using EquipmentManager.Helpers
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - .NET Core 3.0</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"]</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Add local styles, mostly for plugins css file -->
     @if (IsSectionDefined("Styles"))
-    {@RenderSection("Styles", required: false)}
+    {
+        @RenderSection("Styles", false)
+    }
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
-        <link rel="stylesheet" href="~/css/animate.css" />
-        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/css/index-card-deck.scss"/>
+        <link rel="stylesheet" href="~/css/assignmentdetails.css"/>*@
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css"/>
+        <link rel="stylesheet" href="~/css/animate.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/datatables.min.css"/>
+
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="~/css/animate.css" />
-        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+        @*<link rel="stylesheet" href="~/css/index-card-deck.css"/>*@
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="~/css/animate.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/datatables.min.css"/>
+
+        <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
     </environment>
 
 
@@ -28,52 +38,62 @@
 <body>
 
 
-    <!-- Wrapper-->
-    <div id="wrapper" class="@Html.PageClass()">
+<!-- Wrapper-->
+<div id="wrapper" class="@Html.PageClass()">
 
-        <!-- Navigation -->
-        <partial name="_Navigation" />
+    <!-- Navigation -->
+    <partial name="_Navigation"/>
 
-        <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+    <!-- Page wraper -->
+    <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
 
-            <!-- Top Navbar -->
-            <partial name="_TopNavbar" />
+        <!-- Top Navbar -->
+        <partial name="_TopNavbar"/>
 
-            <!-- Main view  -->
-            @RenderBody()
+        <!-- Main view  -->
+        @RenderBody()
+        <script>
+            /*Scroll to top when arrow up clicked BEGIN*/
+            $(window).scroll(function() {
+                var height = $(window).scrollTop();
+                if (height > 100) {
+                    $('#back2Top').fadeIn();
+                } else {
+                    $('#back2Top').fadeOut();
+                }
+            });
+            $(document).ready(function() {
+                $("#back2Top").click(function(event) {
+                    event.preventDefault();
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
+                    return false;
+                });
 
-            <!-- Footer -->
-            <partial name="_Footer" />
-
-        </div>
-        <!-- End page wrapper-->
-
+            });
+            /*Scroll to top when arrow up clicked END*/
+        </script>
+        <!-- Footer -->
+        <partial name="_Footer"/>
+        <!--End Footer-->
     </div>
-    <!-- End wrapper-->
+    <!-- End page wrapper-->
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/Popper/popper.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/metisMenu/dist/jquery.metisMenu.js"></script>
-        <script src="~/lib/slimScroll/jquery.slimscroll.js"></script>
-        <script src="~/lib/pace/pace.js"></script>
-        <script src="~/js/script.js" asp-append-version="true"></script>
+</div>
+<!-- End wrapper-->
 
-        <!-- Only for demo purpose -->
-        <script src="~/js/skin.config.js"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/Popper/popper.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="~/lib/metisMenu/dist/jquery.metisMenu.js"></script>
-        <script src="~/lib/pace/pace.min.js"></script>
-        <script src="~/lib/slimScroll/jquery.slimscroll.min.js"></script>
-        <script src="~/js/script.js" asp-append-version="true"></script>
-    </environment>
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/Popper/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/metisMenu/dist/jquery.metisMenu.js"></script>
+    <script src="~/lib/slimScroll/jquery.slimscroll.js"></script>
+    <script src="~/lib/pace/pace.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/r-2.2.3/rg-1.1.1/rr-1.2.6/sc-2.0.1/datatables.min.js"></script>
+    <script src="~/js/script.js" asp-append-version="true"></script>
 
-    @RenderSection("scripts", required: false)
+
+</environment>
+
+@RenderSection("scripts", false)
 </body>
 </html>
