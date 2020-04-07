@@ -1,95 +1,182 @@
 ﻿@model IEnumerable<EquipmentManager.Models.Assignment>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Assignment Index";
+}
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-5">
+        <h2>Equipment Type Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Assignments")">Equipment Types</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Index</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <p />
+</div>
+<!--BreadCrumbs End-->
+<!--Card Start--><!--CSS Animation Class in DIV Below-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header, Title, and Create Button Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Assignments Index</span>
+                <br />
+                <!--Card Header, Title, and Create Button End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header, Title, and Create Button End-->
+            <!--Card Content/Table Start-->
+            <div class="ibox-content">
+                <div>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-sm btn.dim" onclick="location.href = '@Url.Action("Create", "Assignments")'"><i class="fa fa-plus"></i> Create New</button><hr />
+                    </p>
+                </div>
+                <div class="table-responsive">
+                    <table class="dt-responsive table table-striped table-bordered table-hover dataTables-departments w-100 d-block d-md-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ColleagueId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EquipmentId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Location)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Floor)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RoomNumber)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RequestingDepartment)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AssignedBy)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AssignedDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UnassignedBy)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.UnassignedDate)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ColleagueId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EquipmentId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Location)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Floor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RoomNumber)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RequestingDepartment)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AssignedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AssignedDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UnassignedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.UnassignedDate)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
+    </environment>
 }
 
-<h1>Index</h1>
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/lib/dataTables/datatables.min.js"></script>
+        <script src="~/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+    </environment>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ColleagueId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipmentId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequestingDepartment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AssignedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AssignedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnassignedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnassignedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RoomNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Floor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Department)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColleagueId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EquipmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestingDepartment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AssignedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnassignedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnassignedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoomNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Floor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-table').dataTable({
+                pageLength: 10,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+
+        });
+
+
+    </script>
 }
-    </tbody>
-</table>

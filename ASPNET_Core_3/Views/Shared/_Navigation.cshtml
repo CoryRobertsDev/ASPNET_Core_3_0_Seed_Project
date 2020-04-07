@@ -6,7 +6,7 @@
             <li class="nav-header">
                 <div class="dropdown profile-element">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="block m-t-xs font-bold">INVENTORY MANAGER</span>
+                        <span class="block m-t-xs font-bold">EQUIPMENT MANAGER</span>
                     </a>
                 </div>
                 <div class="logo-element">
@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <li class="@Html.IsSelected("Assignments", "Active")">
-                        <a href="@Url.Action("Index", "Assignments")">
+                        <a href="@Url.Action("Active", "AssignmentsDetails")">
                             <i class="fa fa-star"> Active</i>
                         </a>
                     </li>
@@ -89,12 +89,12 @@
                 </a>
                 <ul class="nav nav-second-level collapse @Html.IsSelected("EquipmentType", cssClass: "in")">
                     <li class="@Html.IsSelected("EquipmentType", "Index")">
-                        <a href="@Url.Action("Index", "EquipmentTypeS")">
+                        <a href="@Url.Action("Index", "EquipmentTypes")">
                             <i class="fa fa-list"> Index</i>
                         </a>
                     </li>
                     <li class="@Html.IsSelected("EquipmentType", "Create")">
-                        <a href="@Url.Action("Create", "Repairs")">
+                        <a href="@Url.Action("Create", "EquipmentTypes")">
                             <i class="fa fa-plus"> Add</i>
                         </a>
                     </li>
@@ -125,13 +125,13 @@
                 <a href="@Url.Action("Index", "Vendors")">
                     <i class="fa fa-building-o"></i> <span class="nav-label" data-i18n="nav.vendors">Vendor</span> <span class="fa arrow"></span>
                 </a>
-                <ul class="nav nav-second-level collapse @Html.IsSelected("Vendors", cssClass: "in")">
-                    <li class="@Html.IsSelected("Vendors", "Index")">
+                <ul class="nav nav-second-level collapse @Html.IsSelected("Vendor", cssClass: "in")">
+                    <li class="@Html.IsSelected("Vendor", "Index")">
                         <a href="@Url.Action("Index", "Vendors")">
                             <i class="fa fa-list"> Index</i>
                         </a>
                     </li>
-                    <li class="@Html.IsSelected("Vendors", "Create")">
+                    <li class="@Html.IsSelected("Vendor", "Create")">
                         <a href="@Url.Action("Create", "Vendors")">
                             <i class="fa fa-plus"> Add</i>
                         </a>

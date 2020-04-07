@@ -4,79 +4,151 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Assignment</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ColleagueId" class="control-label"></label>
-                <input asp-for="ColleagueId" class="form-control" />
-                <span asp-validation-for="ColleagueId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EquipmentId" class="control-label"></label>
-                <input asp-for="EquipmentId" class="form-control" />
-                <span asp-validation-for="EquipmentId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RequestingDepartment" class="control-label"></label>
-                <input asp-for="RequestingDepartment" class="form-control" />
-                <span asp-validation-for="RequestingDepartment" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AssignedBy" class="control-label"></label>
-                <input asp-for="AssignedBy" class="form-control" />
-                <span asp-validation-for="AssignedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AssignedDate" class="control-label"></label>
-                <input asp-for="AssignedDate" class="form-control" />
-                <span asp-validation-for="AssignedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnassignedBy" class="control-label"></label>
-                <input asp-for="UnassignedBy" class="form-control" />
-                <span asp-validation-for="UnassignedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UnassignedDate" class="control-label"></label>
-                <input asp-for="UnassignedDate" class="form-control" />
-                <span asp-validation-for="UnassignedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Location" class="control-label"></label>
-                <input asp-for="Location" class="form-control" />
-                <span asp-validation-for="Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RoomNumber" class="control-label"></label>
-                <input asp-for="RoomNumber" class="form-control" />
-                <span asp-validation-for="RoomNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Floor" class="control-label"></label>
-                <input asp-for="Floor" class="form-control" />
-                <span asp-validation-for="Floor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentId"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Assignment Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Assignments")">Assignment Index</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Create</strong>
+            </li>
+        </ol>
     </div>
 </div>
+<div class="row"></div>
+<!--BreadCrumbs End-->
+<!--Card Start-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-w-100">
+        <div class="ibox ">
+            <!--Card Header Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Create New Assignment</span>
+                <!--Card Title End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header End-->
+            <!--Card Body Start-->
+            <div class="ibox-content">
+                <div class="col-xl-auto">
+                    <!--Form Start-->
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!--Field Container Start-->
+                        <div class="container">
+                            <!--Form Row #1 Start-->
+                            <div class="row">
+                                <!--colleague ID Start-->
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <label asp-for="ColleagueId" class="control-label"></label>
+                                        <input asp-for="ColleagueId" class="form-control" />
+                                        <span asp-validation-for="ColleagueId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--colleague ID End-->
+                                <!--Equipment ID Start-->
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <label asp-for="EquipmentId" class="control-label"></label>
+                                        <input asp-for="EquipmentId" class="form-control" />
+                                        <span asp-validation-for="EquipmentId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Equipment ID End-->
+                                <!--Requesting Dept Start-->
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <label asp-for="RequestingDepartment" class="control-label"></label>
+                                        <input asp-for="RequestingDepartment" class="form-control" />
+                                        <span asp-validation-for="RequestingDepartment" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Requesting Dept End-->
+                                <!--Assigned By Start-->
+                                <div class="col-auto">
+                                    <div class="form-group">
+                                        <label asp-for="AssignedBy" class="control-label"></label>
+                                        <input asp-for="AssignedBy" class="form-control" />
+                                        <span asp-validation-for="AssignedBy" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Assigned By End-->
+                            </div>
+                            <!--Form Row #1 End-->
+                            <!--Form Row #2 Start-->
+                            <div class="row">
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="AssignedDate" class="control-label"></label>
+                                        <input asp-for="AssignedDate" class="form-control" />
+                                        <span asp-validation-for="AssignedDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="Location" class="control-label"></label>
+                                        <input asp-for="Location" class="form-control" />
+                                        <span asp-validation-for="Location" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="Floor" class="control-label"></label>
+                                        <input asp-for="Floor" class="form-control" />
+                                        <span asp-validation-for="Floor" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="RoomNumber" class="control-label"></label>
+                                        <input asp-for="RoomNumber" class="form-control" />
+                                        <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                            </div>
+                            <!--Form Row #2 End-->
+                            <!--Form Row #3 Start-->
+                            <div class="row">
+                                <!--Submit and Back to List Start-->
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+                                </div>
+                                <!--Form End-->
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+ @section Scripts {
+ @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+ }

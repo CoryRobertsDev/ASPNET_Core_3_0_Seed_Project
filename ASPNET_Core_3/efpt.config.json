@@ -7,14 +7,18 @@
    "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "Models",
+   "OutputPath": "",
    "ProjectRootNamespace": "EquipmentManager",
    "SelectedHandlebarsLanguage": 0,
-   "SelectedToBeGenerated": 0,
+   "SelectedToBeGenerated": 1,
    "Tables": [
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Assignment]"
+      },
+      {
+         "HasPrimaryKey": false,
+         "Name": "[dbo].[AssignmentsDetail]"
       },
       {
          "HasPrimaryKey": true,
@@ -49,10 +53,10 @@
          "Name": "[dbo].[Vendor]"
       }
    ],
-   "UseDatabaseNames": false,
+   "UseDatabaseNames": true,
    "UseFluentApiOnly": true,
    "UseHandleBars": false,
-   "UseInflector": true,
+   "UseInflector": false,
    "UseLegacyPluralizer": false,
    "UseSpatial": false
 }

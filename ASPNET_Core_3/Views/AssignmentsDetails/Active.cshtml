@@ -1,0 +1,117 @@
+﻿
+@model IEnumerable<EquipmentManager.Models.AssignmentsDetail>
+<link rel="stylesheet" type="text/css" href="~/Content/css/assignmentdetails.css" />
+
+<!-- Team -->
+<section id="team" class="pb-5">
+    <div class="container">
+        <div class="row">
+            <!-- Team member -->
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card ">
+                                    <div class="card-body text-center">
+                                        @*<p><img class=" img-fluid" src="~/wwwroot/images/colleauge/@(item.ColleagueId).jpg" alt="card image"></p>*@
+                                        <hr style="color: #ffd800" />
+                                        <h5 class="card-title">@($"{item.FirstName} {item.LastName}")</h5>
+                                        <ul class="card-text">
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.ColleagueId):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.ColleagueId)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.Id):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.Id)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.EquipmentId):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.EquipmentId)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.EquipType):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.EquipType)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.Manufacturer): </span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.Manufacturer)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.Model): </span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.Model)</span>
+                                            </li>
+
+                                        </ul>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">@($"{item.FirstName} {item.LastName}") </h4>
+                                        <ul class="card-text">
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.EquipmentId):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.EquipmentId) </span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.RequestingDepartment):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.RequestingDepartment)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.RequestedBy):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.RequestedBy)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.AssignedBy):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.AssignedBy)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.AssignedDate):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.AssignedDate)</span>
+                                            </li>
+
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.SerialNum):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.SerialNum)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.ServiceTag):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.ServiceTag)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.UnassignedBy):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.UnassignedBy)</span>
+                                            </li>
+                                            <li>
+                                                <span class="model">@Html.DisplayNameFor(model => model.UnassignedDate):</span>
+                                                <span class="item">@Html.DisplayFor(modelItem => item.UnassignedDate)</span>
+                                            </li>
+                                            <li><hr /></li>
+                                            <li></li>
+                                        </ul>
+                                        <ul class="list-inline">
+                                            <li><h6><b>Edit Options</b></h6></li>
+                                            <li class="list-inline-item">
+                                                @Html.ActionLink("Assignment", "Edit", "Assignments", new { id = item.Id }, new { @class = "btn btn-primary btn-sm float-center btn-block" })
+                                            </li>
+                                            <li class="list-inline-item">
+                                                @Html.ActionLink("Equipment", "Edit", "Equipment", new { id = item.EquipmentId }, new { @class = "btn btn-primary btn-sm float-center btn-block" })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ./Team member -->
+             }
+        </div>
+    </div>
+</section>
+<!-- Team -->

@@ -1,0 +1,148 @@
+﻿@model EquipmentManager.Models.Repair
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Repair Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Repairs")">Index</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Delete</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row"></div>
+<!--BreadCrumbs End-->
+<!--Card Start-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Delete Record: ID #@Model.Id</span>
+                <!--Card Title End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header End-->
+            <!--Card Body Start-->
+            <div class="ibox-content">
+                <div class="col-xl-auto">
+                    <h2>Are you sure you want to delete this?</h2>
+                    <hr/>
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.EquipmentId)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.EquipmentId)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.RequestedBy)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.RequestedBy)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.RmaNum)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.RmaNum)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DateShipped)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.DateShipped)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.TrackingNum)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.TrackingNum)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Recipient)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Recipient)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.FriendlyAddress)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.FriendlyAddress)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ContactEmail)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ContactEmail)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ContactPhone)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ContactPhone)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ReplacementSerialNumber)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.ReplacementSerialNumber)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Returned)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Returned)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.DateReturned)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.DateReturned)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.State)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.State)
+                        </dd>
+                    </dl>
+                    <hr/>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id"/>
+                        <input type="submit" value="Delete" class="btn btn-primary"/>
+                        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+
+
+                    </form>
+                    <!--Form End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

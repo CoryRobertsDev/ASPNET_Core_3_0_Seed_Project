@@ -3,10 +3,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EquipmentManager.Migrations
 {
-    public partial class InitialCOmmit : Migration
+    public partial class InitialCommit4620 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Assignment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColleagueId = table.Column<string>(nullable: true),
+                    EquipmentId = table.Column<int>(nullable: false),
+                    Location = table.Column<string>(nullable: true),
+                    Floor = table.Column<int>(nullable: false),
+                    RoomNumber = table.Column<int>(nullable: false),
+                    RequestingDepartment = table.Column<string>(fixedLength: true, maxLength: 10, nullable: true),
+                    AssignedBy = table.Column<string>(nullable: true),
+                    AssignedDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    UnassignedBy = table.Column<string>(nullable: true),
+                    UnassignedDate = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignment", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Department",
                 columns: table => new
@@ -27,10 +49,10 @@ namespace EquipmentManager.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
-                    FullName = table.Column<string>(unicode: false, maxLength: 40, nullable: false, computedColumnSql: "(concat([FirstName],[LastName]))"),
+                    Name = table.Column<string>(unicode: false, maxLength: 41, nullable: false, computedColumnSql: "(concat([FirstName],' ',[LastName]))"),
                     LastName = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
                     Email = table.Column<string>(unicode: false, maxLength: 49, nullable: false, computedColumnSql: "(concat([FirstName],[LastName]+'@ucwv.edu'))"),
-                    ColleaugeId = table.Column<string>(maxLength: 10, nullable: true)
+                    ColleaugeId = table.Column<string>(fixedLength: true, maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -43,9 +65,9 @@ namespace EquipmentManager.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EquipType = table.Column<string>(maxLength: 200, nullable: false),
-                    Vendor = table.Column<string>(maxLength: 200, nullable: false),
-                    Manufacturer = table.Column<string>(maxLength: 250, nullable: false),
+                    EquipType = table.Column<string>(maxLength: 200, nullable: true),
+                    Vendor = table.Column<string>(maxLength: 200, nullable: true),
+                    Manufacturer = table.Column<string>(maxLength: 250, nullable: true),
                     Model = table.Column<string>(maxLength: 150, nullable: false),
                     SubModel = table.Column<string>(maxLength: 50, nullable: true),
                     SerialNum = table.Column<string>(maxLength: 50, nullable: false),
@@ -69,13 +91,13 @@ namespace EquipmentManager.Migrations
                 name: "EquipmentType",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NAME = table.Column<string>(maxLength: 100, nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EquipmentType", x => x.ID);
+                    table.PrimaryKey("PK_EquipmentType", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,14 +130,14 @@ namespace EquipmentManager.Migrations
                     StreetAddress3 = table.Column<string>(maxLength: 100, nullable: true),
                     City = table.Column<string>(maxLength: 100, nullable: false),
                     StateId = table.Column<int>(nullable: false),
+                    State = table.Column<string>(nullable: true),
                     Zip = table.Column<string>(maxLength: 10, nullable: false),
                     Country = table.Column<string>(maxLength: 100, nullable: true),
                     ContactEmail = table.Column<string>(maxLength: 100, nullable: true),
                     ContactPhone = table.Column<string>(maxLength: 100, nullable: true),
                     ReplacementSerialNumber = table.Column<string>(maxLength: 100, nullable: true),
                     Returned = table.Column<bool>(nullable: true),
-                    DateReturned = table.Column<DateTime>(type: "date", nullable: true),
-                    State = table.Column<string>(nullable: true)
+                    DateReturned = table.Column<DateTime>(type: "date", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -142,52 +164,21 @@ namespace EquipmentManager.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(maxLength: 250, nullable: false)
+                    Name = table.Column<string>(maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vendor", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Assignment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ColleagueId = table.Column<string>(nullable: false),
-                    EquipmentId = table.Column<int>(nullable: false),
-                    RequestingDepartment = table.Column<string>(nullable: false),
-                    AssignedBy = table.Column<string>(nullable: false),
-                    AssignedDate = table.Column<DateTime>(type: "date", nullable: false),
-                    UnassignedBy = table.Column<int>(nullable: true),
-                    UnassignedDate = table.Column<DateTime>(type: "date", nullable: true),
-                    Location = table.Column<string>(nullable: true),
-                    RoomNumber = table.Column<int>(nullable: true),
-                    Floor = table.Column<int>(nullable: true),
-                    DepartmentId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Assignment", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Assignment_Department_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Department",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Assignment_DepartmentId",
-                table: "Assignment",
-                column: "DepartmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Assignment");
+
+            migrationBuilder.DropTable(
+                name: "Department");
 
             migrationBuilder.DropTable(
                 name: "Employee");
@@ -209,9 +200,6 @@ namespace EquipmentManager.Migrations
 
             migrationBuilder.DropTable(
                 name: "Vendor");
-
-            migrationBuilder.DropTable(
-                name: "Department");
         }
     }
 }

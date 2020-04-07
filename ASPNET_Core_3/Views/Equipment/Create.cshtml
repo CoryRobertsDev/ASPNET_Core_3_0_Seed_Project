@@ -1,0 +1,217 @@
+﻿@model EquipmentManager.Models.Equipment
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Equipment Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Equipment")">Equipment Index</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Create</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row"></div>
+<!--BreadCrumbs End-->
+<!--Card Start-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Add New Record</span>
+                <!--Card Title End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header End-->
+            <!--Card Body Start-->
+            <div class="ibox-content">
+                <div class="col-xl-auto">
+                    <!--Form Start-->
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!--Field Container Start-->
+                        <div class="container">
+                            <!--Form Row #1 Start-->
+                            <div class="row">
+                                <!--colleague ID Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="EquipType" class="control-label"></label>
+                                        <input asp-for="EquipType" class="form-control" />
+                                        <span asp-validation-for="EquipType" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Vendor" class="control-label"></label>
+                                        <input asp-for="Vendor" class="form-control" />
+                                        <span asp-validation-for="Vendor" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Manufacturer" class="control-label"></label>
+                                        <input asp-for="Manufacturer" class="form-control" />
+                                        <span asp-validation-for="Manufacturer" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #1 End-->
+                            <!--Form Row #2 Start-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Model" class="control-label"></label>
+                                        <input asp-for="Model" class="form-control" />
+                                        <span asp-validation-for="Model" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="SubModel" class="control-label"></label>
+                                        <input asp-for="SubModel" class="form-control" />
+                                        <span asp-validation-for="SubModel" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="SerialNum" class="control-label"></label>
+                                        <input asp-for="SerialNum" class="form-control" />
+                                        <span asp-validation-for="SerialNum" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #2 End-->
+                            <!--Form Row #3 Start-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="InvoiceNum" class="control-label"></label>
+                                        <input asp-for="InvoiceNum" class="form-control" />
+                                        <span asp-validation-for="InvoiceNum" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="ServiceTag" class="control-label"></label>
+                                        <input asp-for="ServiceTag" class="form-control" />
+                                        <span asp-validation-for="ServiceTag" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="DateReceived" class="control-label"></label>
+                                        <input asp-for="DateReceived" class="form-control" />
+                                        <span asp-validation-for="DateReceived" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #3 End-->
+                            <!--Form Row #4 Start-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="RequestingDept" class="control-label"></label>
+                                        <input asp-for="RequestingDept" class="form-control" />
+                                        <span asp-validation-for="RequestingDept" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="RequestedBy" class="control-label"></label>
+                                        <input asp-for="RequestedBy" class="form-control" />
+                                        <span asp-validation-for="RequestedBy" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Warranty" class="control-label"></label>
+                                        <input asp-for="Warranty" class="form-control" />
+                                        <span asp-validation-for="Warranty" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #4 End-->
+                            <!--Form Row #5 Start-->
+                            <div class="row">
+                                <hr />
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="DecommissionDate" class="control-label"></label>
+                                        <input asp-for="DecommissionDate" class="form-control" />
+                                        <span asp-validation-for="DecommissionDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="DecommissionStatus" class="control-label"></label>
+                                        <input asp-for="DecommissionStatus" class="form-control" />
+                                        <span asp-validation-for="DecommissionStatus" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #5 End-->
+                            <!--Form Row #6 Start-->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="DestroyDate" class="control-label"></label>
+                                        <input asp-for="DestroyDate" class="form-control" />
+                                        <span asp-validation-for="DestroyDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="DestroyStatus" class="control-label"></label>
+                                        <input asp-for="DestroyStatus" class="form-control" />
+                                        <span asp-validation-for="DestroyStatus" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #6 End-->
+                            <!--Form Row #7 Start-->
+                            <div class="row">
+                                <hr />
+                                <!--Submit and Back to List Start-->
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+                                </div>
+                            </div>
+                            <!--Form Row #7 End-->
+                        </div>
+                    </form>
+                    <!--Form End-->
+                </div>
+            </div>
+            <!--Card Body End-->
+        </div>
+    </div>
+</div>
+<!--Card End-->
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

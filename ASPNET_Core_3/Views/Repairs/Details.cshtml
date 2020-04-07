@@ -1,0 +1,277 @@
+﻿@model EquipmentManager.Models.Repair
+
+@{
+    ViewData["Title"] = "Repair Details";
+}
+
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Repair Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Repairs")">Repairs Index</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row"></div>
+<!--BreadCrumbs End-->
+<!--Card Start-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Record Details: ID #@Model.Id</span>
+                <!--Card Title End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header End-->
+            <!--Card Body Start-->
+            <div class="ibox-content">
+                <div class="col-xl-auto">
+                    <!--Form Start-->
+                    <form asp-action="Details">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!--Field Container Start-->
+                        <div class="container">
+                            <!--Form Row #1 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="EquipmentId" class="control-label"></label>
+                                        <input asp-for="EquipmentId" class="form-control" readonly />
+                                        <span asp-validation-for="EquipmentId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="RequestedBy" class="control-label"></label>
+                                        <input asp-for="RequestedBy" class="form-control" readonly />
+                                        <span asp-validation-for="RequestedBy" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="RmaNum" class="control-label"></label>
+                                        <input asp-for="RmaNum" class="form-control" readonly />
+                                        <span asp-validation-for="RmaNum" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #1 End-->
+                            <!--Form Row #2 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="DateShipped" class="control-label"></label>
+                                        <input asp-for="DateShipped" class="form-control" readonly />
+                                        <span asp-validation-for="DateShipped" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="TrackingNum" class="control-label"></label>
+                                        <input asp-for="TrackingNum" class="form-control" readonly />
+                                        <span asp-validation-for="TrackingNum" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Recipient" class="control-label"></label>
+                                        <input asp-for="Recipient" class="form-control" readonly />
+                                        <span asp-validation-for="Recipient" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #2 End-->
+                            <!--Form Row #3 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label asp-for="StreetAddress1" class="control-label"></label>
+                                        <input asp-for="StreetAddress1" class="form-control" readonly />
+                                        <span asp-validation-for="StreetAddress1" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #3 End-->
+                            <!--Form Row #4 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label asp-for="StreetAddress2" class="control-label"></label>
+                                        <input asp-for="StreetAddress2" class="form-control" readonly />
+                                        <span asp-validation-for="StreetAddress2" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #4 End-->
+                            <!--Form Row #5 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label asp-for="StreetAddress3" class="control-label"></label>
+                                        <input asp-for="StreetAddress3" class="form-control" readonly />
+                                        <span asp-validation-for="StreetAddress3" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #5 End-->
+                            <!--Form Row #6 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label asp-for="City" class="control-label"></label>
+                                        <input asp-for="City" class="form-control" readonly />
+                                        <span asp-validation-for="City" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label asp-for="StateId" class="control-label"></label>
+                                        <input asp-for="StateId" class="form-control" readonly />
+                                        <span asp-validation-for="StateId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <label asp-for="Zip" class="control-label"></label>
+                                        <input asp-for="Zip" class="form-control" readonly />
+                                        <span asp-validation-for="Zip" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="Country" class="control-label"></label>
+                                        <input asp-for="Country" class="form-control" readonly />
+                                        <span asp-validation-for="Country" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #6 End-->
+                            <!--Form Row #7 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="ContactPhone" class="control-label"></label>
+                                        <input asp-for="ContactPhone" class="form-control" readonly />
+                                        <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="ContactEmail" class="control-label"></label>
+                                        <input asp-for="ContactEmail" class="form-control" readonly />
+                                        <span asp-validation-for="ContactEmail" class="text-danger"></span>
+                                    </div>
+                                </div><!-- End-->
+                            </div>
+                            <!--Form Row #7 End-->
+                            <!--Form Row #8 Start-->
+                            <div class="row">
+                                <!-- Start-->
+                                <hr />
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="ReplacementSerialNumber" class="control-label"></label>
+                                        <input asp-for="ReplacementSerialNumber" class="form-control" readonly />
+                                        <span asp-validation-for="ReplacementSerialNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="Returned" class="control-label"></label>
+                                        <input asp-for="Returned" class="form-control" readonly />
+                                        <span asp-validation-for="Returned" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                                <!-- Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="DateReturned" class="control-label"></label>
+                                        <input asp-for="DateReturned" class="form-control" readonly />
+                                        <span asp-validation-for="DateReturned" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <!-- End-->
+                            </div>
+                            <!--Form Row #8 End-->
+                            <!--Form Row #9 Start-->
+                            @*<div class="row">*@
+                            <!-- Start-->
+                            @*<div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label asp-for="State" class="control-label"></label>
+                                            <input asp-for="State" class="form-control" />
+                                            <span asp-validation-for="State" class="text-danger"></span>
+                                        </div>
+                                    <!-- End-->
+                                </div>*@
+                            <!--Form Row #9 End-->
+
+                            <hr />
+                            <!--Submit and Back to List Start-->
+                            <div class="form-group">
+                                <a class="btn btn-primary" asp-action="Edit">Edit</a>
+                                <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                    <!--Form End-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

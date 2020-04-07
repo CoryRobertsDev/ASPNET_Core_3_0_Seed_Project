@@ -21,8 +21,7 @@ namespace EquipmentManager.Controllers
         // GET: Assignments
         public async Task<IActionResult> Index()
         {
-            var ucInventoryContext = _context.Assignments.Include(a => a.Department);
-            return View(await ucInventoryContext.ToListAsync());
+            return View(await _context.Assignment.ToListAsync());
         }
 
         // GET: Assignments/Details/5
@@ -33,10 +32,8 @@ namespace EquipmentManager.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignments
-                .Include(a => a.Department)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (assignment == null)
+            var assignment = await _context.Assignment
+                .FirstOrDefaultAsync(m => m.Id == id);            if (assignment == null)
             {
                 return NotFound();
             }
@@ -47,7 +44,6 @@ namespace EquipmentManager.Controllers
         // GET: Assignments/Create
         public IActionResult Create()
         {
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name");
             return View();
         }
 
@@ -56,7 +52,7 @@ namespace EquipmentManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ColleagueId,EquipmentId,RequestingDepartment,AssignedBy,AssignedDate,UnassignedBy,UnassignedDate,Location,RoomNumber,Floor,DepartmentId")] Assignment assignment)
+        public async Task<IActionResult> Create([Bind("Id,ColleagueId,EquipmentId,Location,Floor,RoomNumber,RequestingDepartment,AssignedBy,AssignedDate,UnassignedBy,UnassignedDate")] Assignment assignment)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +60,6 @@ namespace EquipmentManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", assignment.DepartmentId);
             return View(assignment);
         }
 
@@ -76,12 +71,11 @@ namespace EquipmentManager.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignments.FindAsync(id);
+            var assignment = await _context.Assignment.FindAsync(id);
             if (assignment == null)
             {
                 return NotFound();
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", assignment.DepartmentId);
             return View(assignment);
         }
 
@@ -90,7 +84,7 @@ namespace EquipmentManager.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ColleagueId,EquipmentId,RequestingDepartment,AssignedBy,AssignedDate,UnassignedBy,UnassignedDate,Location,RoomNumber,Floor,DepartmentId")] Assignment assignment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ColleagueId,EquipmentId,Location,Floor,RoomNumber,RequestingDepartment,AssignedBy,AssignedDate,UnassignedBy,UnassignedDate")] Assignment assignment)
         {
             if (id != assignment.Id)
             {
@@ -117,7 +111,6 @@ namespace EquipmentManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DepartmentId"] = new SelectList(_context.Departments, "Id", "Name", assignment.DepartmentId);
             return View(assignment);
         }
 
@@ -129,8 +122,7 @@ namespace EquipmentManager.Controllers
                 return NotFound();
             }
 
-            var assignment = await _context.Assignments
-                .Include(a => a.Department)
+            var assignment = await _context.Assignment
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (assignment == null)
             {
@@ -145,15 +137,15 @@ namespace EquipmentManager.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var assignment = await _context.Assignments.FindAsync(id);
-            _context.Assignments.Remove(assignment);
+            var assignment = await _context.Assignment.FindAsync(id);
+            _context.Assignment.Remove(assignment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AssignmentExists(int id)
         {
-            return _context.Assignments.Any(e => e.Id == id);
+            return _context.Assignment.Any(e => e.Id == id);
         }
     }
 }

@@ -1,0 +1,183 @@
+﻿@model IEnumerable<EquipmentManager.Models.Repair>
+
+@{
+    ViewData["Title"] = "Repairs Index";
+}
+
+<!--BreadCrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-5">
+        <h2>Repairs Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                Repairs
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Index</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <p />
+</div>
+<!--BreadCrumbs End-->
+<!--Card Start--><!--CSS Animation Class in DIV Below-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header, Title, and Create Button Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Repair Index</span>
+                <br />
+                <!--Card Header, Title, and Create Button End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header, Title, and Create Button End-->
+            <!--Card Content/Table Start-->
+            <div class="ibox-content">
+                <div>
+                    <p>
+                        <button type="button" class="btn btn-primary btn-sm btn.dim" onclick="location.href = '@Url.Action("Create", "Departments")'"><i class="fa fa-plus"></i> Create New</button><hr />
+                    </p>
+                </div>
+                <div class="table-responsive">
+                    <table class="dt-responsive table table-striped table-bordered table-hover dataTables-departments w-100 d-block d-md-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EquipmentId)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.RequestedBy)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateShipped)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TrackingNum)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Recipient)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FriendlyAddress)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ContactEmail)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ContactPhone)
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EquipmentId)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RequestedBy)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DateShipped)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TrackingNum)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Recipient)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FriendlyAddress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ContactEmail)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ContactPhone)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-white btn-bitbucket btn-sm" asp-action="Edit" asp-route-id="@item.Id">
+                                            <i class="fa fa-cog"></i>
+                                        </a>
+                                        <a class="btn btn-white btn-bitbucket btn-sm" asp-action="Details" asp-route-id="@item.Id">
+                                            <i class="fa fa-list"></i>
+                                        </a>
+                                        <a class="btn btn-white btn-bitbucket btn-sm" asp-action="Delete" asp-route-id="@item.Id">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--Card Content/Table End-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Card End-->
+<!--JS/CSS for Datatable Start-->
+
+@section Styles {
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="~/lib/dataTables/datatables.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development,Staging,Production">
+        <script src="~/lib/dataTables/datatables.min.js"></script>
+        <script src="~/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('.dataTables-departments').DataTable({
+                responsive: true,
+                pageLength: 10,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'excel', title: 'RepairIndex' },
+                    { extend: 'pdf', title: 'RepairIndex' },
+                    {
+                        extend: 'print',
+                        customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '9px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+        });
+    </script>
+}
+
+<!--JS/CSS for Datatable End-->

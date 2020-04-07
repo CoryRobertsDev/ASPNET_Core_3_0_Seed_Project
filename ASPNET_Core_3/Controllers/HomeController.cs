@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ASPNET_Core_3.Controllers
+namespace EquipmentManager.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Main()
+        public IActionResult Index()
         {
             return View();
         }

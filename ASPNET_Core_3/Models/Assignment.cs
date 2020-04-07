@@ -3,27 +3,45 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EquipmentManager.Models
 {
-    public partial class Assignment
+
+    [Table("Assignment")]
+    public class Assignment
     {
+        /* Database Fields and Annotations
+        -------------------------------------------------- */
+        [Key]
+        [Display(Name = "Assignment Id")]
+        public int Id { get; set; }
 
-        [Key] public int Id { get; set; }
-        public string ColleagueId { get; set; }
-        public int EquipmentId { get; set; }
-        public string RequestingDepartment { get; set; }
-        public string AssignedBy { get; set; }
+        [Display(Name = "Colleague Id")] public string ColleagueId { get; set; }
+
+        [Display(Name = "Equipment Id")] public int EquipmentId { get; set; }
+
+        [Display(Name = "Building")] public string Location { get; set; }
+
+        [Display(Name = "Floor")] public int Floor { get; set; }
+
+        [Display(Name = "Room Number")] public int RoomNumber { get; set; }
+
+
+        [Display(Name = "Requesting Dept.")] public string RequestingDepartment { get; set; }
+
+        [Display(Name = "Assigned By")] public string AssignedBy { get; set; }
+
+        [Display(Name = "Date Assigned")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AssignedDate { get; set; }
-        public int? UnassignedBy { get; set; }
-        public DateTime? UnassignedDate { get; set; }
-        public string Location { get; set; }
-        public int? RoomNumber { get; set; }
-        public int? Floor { get; set; }
 
-        public int DepartmentId { get; set; }
-        public virtual Department Department { get; set; }
+        [Display(Name = "Unassigned By")] public string UnassignedBy { get; set; }
 
+
+        [Display(Name = "Date Unassigned")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime UnassignedDate { get; set; }
     }
 }

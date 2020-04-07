@@ -3,82 +3,148 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Assignment</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ColleagueId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ColleagueId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EquipmentId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EquipmentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RequestingDepartment)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RequestingDepartment)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AssignedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AssignedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AssignedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AssignedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UnassignedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UnassignedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UnassignedDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UnassignedDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RoomNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RoomNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Floor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Floor)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Department)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department.Name)
-        </dd>
-    </dl>
+<!--Breadcrumbs Start-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <h2>Assignment Manager</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Home")">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="@Url.Action("Index", "Assigment")">Assignment Index</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Details</strong>
+            </li>
+        </ol>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="row"></div>
+<!--BreadCrumbs End-->
+<!--Card Start-->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="w-100">
+        <div class="ibox ">
+            <!--Card Header Start-->
+            <div class="ibox-title bg-primary">
+                <span class="h4">Record Details: ID #@Model.Id</span>
+                <!--Card Title End-->
+                <!--Header Action Buttons Start-->
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                </div>
+                <!--Header Action Buttons Stop-->
+            </div>
+            <!--Card Header End-->
+            <!--Card Body Start-->
+            <div class="ibox-content">
+                <div class="col-xl-auto">
+                    <!--Form Start-->
+                    <form asp-action="details">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <!--Field Container Start-->
+                        <div class="container">
+                            <!--Form Row #1 Start-->
+                            <div class="row">
+                                <!--colleague ID Start-->
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="ColleagueId" class="control-label"></label>
+                                        <input asp-for="ColleagueId" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--colleague ID End-->
+                                <!--Equipment ID Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="EquipmentId" class="control-label"></label>
+                                        <input asp-for="EquipmentId" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Equipment ID End-->
+                                <!--Requesting Dept Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="RequestingDepartment" class="control-label"></label>
+                                        <input asp-for="RequestingDepartment" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Requesting Dept End-->
+                                <!--Assigned By Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="AssignedBy" class="control-label"></label>
+                                        <input asp-for="AssignedBy" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Assigned By End-->
+                            </div>
+                            <!--Form Row #1 End-->
+                            <!--Form Row #2 Start-->
+                            <div class="row">
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="AssignedDate" class="control-label"></label>
+                                        <input asp-for="AssignedDate" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="Location" class="control-label"></label>
+                                        <input asp-for="Location" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="Floor" class="control-label"></label>
+                                        <input asp-for="Floor" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                                <!--Assigned Date Start-->
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label asp-for="RoomNumber" class="control-label"></label>
+                                        <input asp-for="RoomNumber" class="form-control" />
+                                    </div>
+                                </div>
+                                <!--Assigned Date End-->
+                            </div>
+                            <!--Form Row #2 End-->
+                            <!--Form Row #7 Start-->
+                            <hr/>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!--Submit and Back to List Start-->
+                                    <div class="form-group">
+                                        <a class="btn btn-primary" asp-action="Edit">Edit</a>
+                                        <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Form Row #7 End-->
+                        </div>
+                    </form>
+                    <!--Form End-->
+                </div>
+            </div>
+            <!--Card Body End-->
+        </div>
+    </div>
 </div>
+<!--Card End-->
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
